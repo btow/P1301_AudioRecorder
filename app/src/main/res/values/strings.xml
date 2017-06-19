@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">P1301_AudioRecorder</string>
+    <string name="start_record">Start record</string>
+    <string name="start_read">Start Read</string>
+    <string name="stop_record">Stop Record</string>
+    <string name="stop_read">Stop Read</string>
+</resources>
