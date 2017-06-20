@@ -1,5 +1,6 @@
 package com.example.samsung.p1301_audiorecorder;
 
+import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -80,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void readStart(View view) {
-        Messager.sendToAllRecipients(getBaseContext(), "read start");
+
+        final Context mCxt = getBaseContext();
+        Messager.sendToAllRecipients(mCxt, "read start");
         isReading = true;
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -95,10 +99,9 @@ public class MainActivity extends AppCompatActivity {
                     readCount = audioRecord.read(mBuffer, 0, mBufferSize);
                     totalCount += readCount;
                     Messager.sendToAllRecipients(
-                            getBaseContext(),
+                            mCxt,
                             "readCount = " + readCount +
-                            "totalCount" + totalCount
-                    );
+                            ", totalCount = " + totalCount);
                 }
             }
         }).start();
